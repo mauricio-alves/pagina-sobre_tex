@@ -26,12 +26,15 @@ p {
 
 /* --------------  HEADER  ----------------  */
 header {
-  background-color: var(--background);
+  opacity: 0.8;
+  background-image: url(/src/images/hotel-externo.jpg);
+  background-position: 10% 60%;
+  background-size: cover;
 }
 
 .topo {
   display: flex;
-  height: 15rem;
+  height: 20rem;
   justify-content: center;
   gap: 6rem;
 }
@@ -116,17 +119,13 @@ nav ul li a:hover::after {
 
 /* --------------  MAIN  ----------------  */
 .container {
+  min-height: 100vh;
   position: relative;
+  width: 80rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 80vw;
-}
-
-.white-bg {
-  background-color: var(--white);
-  color: var(--text);
-  margin: 40px 0;
+  padding: 3rem 3rem;
 }
 
 .subtitle {
@@ -136,83 +135,115 @@ nav ul li a:hover::after {
   padding: 20px 0;
 }
 
-.yellow-bg {
-  background-color: var(--background);
-  color: var(--text);
-  padding: 2rem 0;
-  margin-top: 40px;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  margin-top: 30px;
-}
-
-.content div {
-  text-align: center;
-  width: 100%;
-}
-
-.content div img {
-  width: 90%;
-}
-
 .foto-hotel {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .text {
-  margin-top: 70px;
+  text-align: justify;
 }
 
-.text p {
-  text-align: left;
-  padding-bottom: 1rem;
-}
-
-.images {
-  height: 70vh;
+.grid-one-content {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
+  flex-flow: column wrap;
+  justify-content: center;
 }
 
-.images.card div {
-  width: 30%;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 3rem;
+  counter-reset: grid-counter;
+}
+
+.grid h3 {
+  font-size: 3rem;
+  position: relative;
+  padding: 0 0 2rem 5rem;
+}
+
+.grid h3::before {
+  content: counter(grid-counter);
+  counter-increment: grid-counter;
+  position: absolute;
+  font-size: 8rem;
+  font-style: italic;
+  top: -4rem;
+  left: -2rem;
+  transform: rotate(5deg);
+}
+
+.gallery-img {
+  width: 100%;
+  max-width: 26rem;
+  max-height: 26rem;
+  background-size: contain;
   overflow: hidden;
-  text-align: center;
 }
 
-.info p {
-  text-align: center;
-  padding: 0 3rem 3rem 3rem;
+.gallery-img img {
+  width: 500px;
+  transition: all 300ms ease-in-out;
 }
 
-.card {
-  text-align: center;
+.gallery-img img:hover {
+  transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
 }
 
-.images img {
-  width: 400px;
-  height: 250px;
-  opacity: 1;
-  transition: all 0.6s;
-}
-
-.images img:hover {
-  opacity: 0.4;
-}
-
-.servicos {
+.content {
   display: flex;
+  justify-content: space-between;
+}
+
+.content div {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
   align-items: center;
 }
 
-.academia p {
-  text-align: right;
+.content div img {
+  width: 350px;
+}
+
+.btn {
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.saiba-mais {
+  text-decoration: none;
+  background-color: var(--azul-claro);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.saiba-mais:hover {
+  background-color: var(--sombra);
+  transition: all 300ms ease-in-out;
+}
+
+.reserva {
+  font-size: 1.2rem;
+  text-decoration: none;
+  background-color: var(--title);
+  color: var(--white);
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+.reserva:hover {
+  background-color: var(--background);
+  color: var(--sombra);
+  transition: all 300ms ease-in-out;
 }
 
 /* --------------  FOOTER ----------------  */
@@ -255,12 +286,12 @@ footer h3 {
   color: var(--title);
 }
 
-#redes-sociais {
+.redes-sociais {
   display: flex;
   gap: 1rem;
 }
 
-#redes-sociais img {
+.redes-sociais img {
   width: 35px;
   border-radius: 20px;
 }
@@ -277,120 +308,55 @@ footer h3 {
     display: block;
     position: absolute;
     top: 1vw;
-    right: 1vw;
+    right: 3vw;
   }
 
   .menu-hb img {
     width: 2rem;
+    background-color: var(--white);
+    padding: 2px;
+  }
+
+  .topo {
+    height: 8rem;
+    gap: 1rem;
   }
 
   .nav_menu {
     display: none;
   }
 
-  .logo_name {
-    display: flex;
-  }
-
   .logo_name h1 {
     display: flex;
-    align-items: center;
     font-size: 2rem;
   }
 
-  .logo_name h1::first-letter {
-    font-size: 4rem;
+  .logo img {
+    width: 4rem;
+    height: 1.5rem;
   }
 
-  .logo img {
-    width: 3rem;
-    justify-content: center;
+  .foto-hotel img {
+    width: 100%;
   }
 
   .content {
     flex-direction: column;
   }
 
-  .text {
-    padding: 20px;
-  }
-
-  .text p {
-    text-align: center;
+  .content div {
+    margin-bottom: 1rem;
   }
 
   .container {
     width: 100vw;
   }
 
-  .yellow-bg {
-    margin: 0;
-    padding: 0 0 1500px 0;
-    height: 100vh;
-    padding-top: 40px;
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
   }
-
-  .images {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .images {
-    margin-top: 430px;
-  }
-
-  .card img {
-    width: 300px;
-    height: 180px;
-  }
-
-  .academia {
-    display: flex;
-    order: 2;
-  }
-
-  .content div img:nth-child(2) {
-    display: flex;
-    order: 1;
-  }
-
-  footer {
-    font-size: 0.5rem;
-  }
-
-  footer h3 {
-    font-size: 1.5rem;
-  }
-
-  footer li {
-    font-size: 1rem;
-  }
-
-  .links {
-    gap: 20px;
-  }
-
-  .seta {
-    gap: 12rem;
-    align-items: flex-end;
-    margin-right: 2rem;
-    margin-top: -14rem;
-  }
-
-  .idioma {
-    font-size: 1rem;
-  }
-
-  .rodape {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .top-btn img {
-    width: 2rem;
-  }
-
+  
   .navegacao,
   .termos {
     display: none;
